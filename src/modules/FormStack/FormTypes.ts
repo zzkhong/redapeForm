@@ -1,3 +1,5 @@
+import { initFields, setFields } from './FormActions';
+
 // Attributes of Form Field from API
 export interface FormFieldType {
   label: string;
@@ -14,9 +16,4 @@ export interface FormStateType {
 }
 
 // Form Action Type
-type SetFieldsAction = {
-  type: string;
-  fields: FormFieldType[];
-};
-
-export type FormActions = SetFieldsAction;
+export type FormActions = ReturnType<typeof initFields | typeof setFields>;

@@ -8,7 +8,7 @@ const initialState: FormStateType = {
 const reducer = (state: FormStateType = initialState, action: FormActions) => {
   switch (action.type) {
     case FORM_ACTIONS_TYPES.SET_FIELDS:
-      return { ...state, fields: action.fields };
+      return { ...state, fields: action.payload };
     default:
       return state;
   }

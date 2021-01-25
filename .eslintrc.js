@@ -27,15 +27,18 @@ module.exports = {
     ],
     'react/jsx-filename-extension': [
       2,
-      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+      {extensions: ['.js', '.jsx', '.ts', '.tsx']},
     ],
     'no-shadow': 0,
     'no-use-before-define': 0,
     'no-unused-vars': 0,
     'no-empty-pattern': 0,
     'no-empty': 0,
+    'no-redeclare': 0,
     'react/display-name': 0,
     'react/prop-types': 0,
+    'object-curly-spacing': 0,
+    'implicit-arrow-linebreak': 0,
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-empty-interface': 0,
     '@typescript-eslint/ban-ts-comment': 0,
@@ -45,6 +48,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-redeclare': ['error'],
   },
   settings: {
     'import/resolver': {
