@@ -5,6 +5,9 @@ import {FORM_ACTIONS_TYPES, setFetchSuccess, setFields} from './FormActions';
 function* onInitFields() {
   let result;
 
+  // Initialize Fetch State
+  yield put(setFetchSuccess(null));
+
   try {
     // Fetch Form Fields
     result = yield call(

@@ -1,12 +1,12 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import form from 'modules/FormStack/FormReducer';
-import { FormStateType } from 'modules/FormStack/FormTypes';
+import {IFormStateType} from 'modules/FormStack/FormTypes';
 
-type AppState = {
-  form: FormStateType;
+export type RootState = {
+  form: IFormStateType;
 };
 
-const reducers = combineReducers<AppState>({
+const reducers = combineReducers<RootState>({
   form,
 });
 

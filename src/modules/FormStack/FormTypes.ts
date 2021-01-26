@@ -1,7 +1,7 @@
 import {initFields, setFetchSuccess, setFields} from './FormActions';
 
 // Attributes of Form Field from API
-export interface FormFieldType {
+export interface IFormFieldType {
   label: string;
   type: string;
   value: string | number;
@@ -11,8 +11,8 @@ export interface FormFieldType {
 }
 
 // Form Reducer State Type
-export interface FormStateType {
-  fields: FormFieldType[];
+export interface IFormStateType {
+  fields: IFormFieldType[];
   isFetchSuccess: boolean | null;
 }
 

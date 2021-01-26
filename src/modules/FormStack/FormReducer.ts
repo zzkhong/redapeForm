@@ -1,12 +1,12 @@
 import {FORM_ACTIONS_TYPES} from './FormActions';
-import {FormActions, FormStateType} from './FormTypes';
+import {FormActions, IFormStateType} from './FormTypes';
 
-const initialState: FormStateType = {
+const initialState: IFormStateType = {
   fields: [],
   isFetchSuccess: null,
 };
 
-const reducer = (state: FormStateType = initialState, action: FormActions) => {
+const reducer = (state: IFormStateType = initialState, action: FormActions) => {
   switch (action.type) {
     case FORM_ACTIONS_TYPES.SET_FIELDS:
       return {...state, fields: action.payload};
