@@ -1,21 +1,26 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import {
   StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
-import {Typography} from 'common/styles';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Colors, Typography} from 'common/styles';
 
 interface IRadioFieldProps {
   label: string;
-  value: string[];
+  value: any;
+  onValueChange: (e: string | ChangeEvent<any>) => void;
 }
 
-const RadioField: React.FC<IRadioFieldProps> = ({label, value}) => {
-  const [selected, setSelected] = React.useState<string | null>(null);
+const RadioField: React.FC<IRadioFieldProps> = ({
+  label,
+  value,
+  onValueChange,
+}) => {
+  const [selected, setSelected] = React.useState<string>(value[0]);
 
   const handleSelect = React.useCallback(
     (selectedValue) => {
-      setSelected(selectedValue === selected ? null : selectedValue);
+      onValueChange(selectedValue);
+      setSelected(selectedValue);
     },
     [selected, setSelected],
   );

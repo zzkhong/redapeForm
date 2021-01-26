@@ -10,10 +10,7 @@ function* onInitFields() {
 
   try {
     // Fetch Form Fields
-    result = yield call(
-      ApiHelper.get,
-      'https://ansible-template-engine.herokuapp.com/form',
-    );
+    result = yield call(ApiHelper.get, 'form');
 
     // Handle data fetched
     if (result.data) {

@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// The practice of 12 Factors would need this to be place in the ENV file
+const BASE_URL = 'https://ansible-template-engine.herokuapp.com';
+
 export class ApiError extends Error {
   errorMessage: string;
 
@@ -19,7 +22,7 @@ const get = async (url: string) => {
   let result;
 
   try {
-    result = await axios.get(url, {
+    result = await axios.get(`${BASE_URL}/${url}`, {
       headers: {
         ...getCommonHeaders,
       },

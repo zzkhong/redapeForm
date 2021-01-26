@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {Typography} from 'common/styles';
 
 interface ISelectFieldProps {
   label: string;
-  value: string[];
+  value: any;
+  defaultValue: any;
+  onValueChange: (e: string | ChangeEvent<any>) => void;
 }
 
-const SelectField: React.FC<ISelectFieldProps> = ({label, value}) => {
-  const [selected, setSelected] = React.useState<string | number | undefined>();
+const SelectField: React.FC<ISelectFieldProps> = ({
+  label,
+  value,
+  defaultValue,
+  onValueChange,
+}) => {
+  const [selected, setSelected] = React.useState<any>(defaultValue);
 
   const handleValueChange = React.useCallback(
     (selectedValue) => {
+      onValueChange(selectedValue);
       setSelected(selectedValue);
     },
     [setSelected],
@@ -23,14 +31,17 @@ const SelectField: React.FC<ISelectFieldProps> = ({label, value}) => {
       <Text style={styles.label}>{label}</Text>
       <View style={styles.input}>
         <Picker selectedValue={selected} onValueChange={handleValueChange}>
-          {!!value
-            && value.map((selectedValue: string) => (
+          {value ? (
+            value.map((selectedValue: string) => (
               <Picker.Item
                 key={selectedValue}
                 label={selectedValue}
                 value={selectedValue}
               />
-            ))}
+            ))
+          ) : (
+            <></>
+          )}
         </Picker>
       </View>
     </>

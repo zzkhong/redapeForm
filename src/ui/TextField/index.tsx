@@ -4,16 +4,47 @@ import {
   StyleSheet, Text, TextInput, View,
 } from 'react-native';
 
-interface ITextFieldProps {
-  label: string;
+// TextInput Variations (match with API)
+enum TEXT_INPUT_TYPES {
+  EMAIL = 'email',
+  PHONE = 'telephone',
+  HIDDEN = 'hidden',
 }
 
-const TextField: React.FC<ITextFieldProps> = ({label}) => (
-  <View style={styles.row}>
-    <Text style={styles.label}>{label}</Text>
-    <TextInput style={styles.input} placeholder={label} />
-  </View>
-);
+interface ITextFieldProps {
+  label: string;
+  onChangeText: ((text: string) => void) | undefined;
+  type: string;
+}
+
+const TextField: React.FC<ITextFieldProps> = ({label, onChangeText, type}) => {
+  const getInputType = () => {
+    switch (type) {
+      case TEXT_INPUT_TYPES.EMAIL:
+        return 'email-address';
+      case TEXT_INPUT_TYPES.PHONE:
+        return 'phone-pad';
+      default:
+        return 'default';
+    }
+  };
+
+  const isHidden = type === TEXT_INPUT_TYPES.HIDDEN;
+
+  return !isHidden ? (
+    <View style={styles.row}>
+      <Text style={styles.label}>{label}</Text>
+      <TextInput
+        keyboardType={getInputType()}
+        onChangeText={onChangeText}
+        style={styles.input}
+        placeholder={label}
+      />
+    </View>
+  ) : (
+    <></>
+  );
+};
 
 const styles = StyleSheet.create({
   row: {
@@ -27,8 +58,9 @@ const styles = StyleSheet.create({
     height: 50,
     borderWidth: 0.5,
     borderRadius: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
+  hidden: {},
 });
 
 export default TextField;
