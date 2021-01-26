@@ -8,6 +8,7 @@ interface ISelectFieldProps {
   value: any;
   defaultValue: any;
   onValueChange: (e: string | ChangeEvent<any>) => void;
+  isHidden: boolean;
 }
 
 const SelectField: React.FC<ISelectFieldProps> = ({
@@ -15,6 +16,7 @@ const SelectField: React.FC<ISelectFieldProps> = ({
   value,
   defaultValue,
   onValueChange,
+  isHidden,
 }) => {
   const [selected, setSelected] = React.useState<any>(defaultValue);
 
@@ -26,7 +28,7 @@ const SelectField: React.FC<ISelectFieldProps> = ({
     [setSelected],
   );
 
-  return (
+  return !isHidden ? (
     <>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.input}>
@@ -45,6 +47,8 @@ const SelectField: React.FC<ISelectFieldProps> = ({
         </Picker>
       </View>
     </>
+  ) : (
+    <></>
   );
 };
 

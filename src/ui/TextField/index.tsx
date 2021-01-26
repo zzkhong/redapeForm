@@ -8,16 +8,21 @@ import {
 enum TEXT_INPUT_TYPES {
   EMAIL = 'email',
   PHONE = 'telephone',
-  HIDDEN = 'hidden',
 }
 
 interface ITextFieldProps {
   label: string;
   onChangeText: ((text: string) => void) | undefined;
   type: string;
+  isHidden: boolean;
 }
 
-const TextField: React.FC<ITextFieldProps> = ({label, onChangeText, type}) => {
+const TextField: React.FC<ITextFieldProps> = ({
+  label,
+  onChangeText,
+  type,
+  isHidden,
+}) => {
   const getInputType = () => {
     switch (type) {
       case TEXT_INPUT_TYPES.EMAIL:
@@ -28,8 +33,6 @@ const TextField: React.FC<ITextFieldProps> = ({label, onChangeText, type}) => {
         return 'default';
     }
   };
-
-  const isHidden = type === TEXT_INPUT_TYPES.HIDDEN;
 
   return !isHidden ? (
     <View style={styles.row}>

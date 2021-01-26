@@ -8,12 +8,14 @@ interface IRadioFieldProps {
   label: string;
   value: any;
   onValueChange: (e: string | ChangeEvent<any>) => void;
+  isHidden: boolean;
 }
 
 const RadioField: React.FC<IRadioFieldProps> = ({
   label,
   value,
   onValueChange,
+  isHidden,
 }) => {
   const [selected, setSelected] = React.useState<string>(value[0]);
 
@@ -25,7 +27,7 @@ const RadioField: React.FC<IRadioFieldProps> = ({
     [selected, setSelected],
   );
 
-  return (
+  return !isHidden ? (
     <>
       <Text style={styles.label}>{label}</Text>
       {!!value
@@ -47,6 +49,8 @@ const RadioField: React.FC<IRadioFieldProps> = ({
           </TouchableOpacity>
         ))}
     </>
+  ) : (
+    <></>
   );
 };
 

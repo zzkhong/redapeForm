@@ -1,5 +1,5 @@
 import {typedAction} from 'common/actions';
-import {IFormFieldType} from './FormTypes';
+import {IFormFieldAttribute} from './FormTypes';
 
 export enum FORM_ACTIONS_TYPES {
   INIT_FIELDS = 'FORM/INIT_FIELDS',
@@ -9,7 +9,7 @@ export enum FORM_ACTIONS_TYPES {
 
 export const initFields = () => typedAction(FORM_ACTIONS_TYPES.INIT_FIELDS);
 
-export const setFields = (fields: IFormFieldType[]) =>
+export const setFields = (fields: IFormFieldAttribute[]) =>
   typedAction(FORM_ACTIONS_TYPES.SET_FIELDS, fields);
 
 export const setFetchSuccess = (isFetchSuccess: boolean | null) =>
