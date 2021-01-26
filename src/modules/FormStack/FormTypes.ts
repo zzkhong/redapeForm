@@ -1,4 +1,4 @@
-import { initFields, setFields } from './FormActions';
+import {initFields, setFetchSuccess, setFields} from './FormActions';
 
 // Attributes of Form Field from API
 export interface FormFieldType {
@@ -13,7 +13,10 @@ export interface FormFieldType {
 // Form Reducer State Type
 export interface FormStateType {
   fields: FormFieldType[];
+  isFetchSuccess: boolean | null;
 }
 
 // Form Action Type
-export type FormActions = ReturnType<typeof initFields | typeof setFields>;
+export type FormActions = ReturnType<
+  typeof initFields | typeof setFields | typeof setFetchSuccess
+>;

@@ -10,6 +10,7 @@ module.exports = {
           common: './src/common',
           modules: './src/modules',
           ui: './src/ui',
+          utils: './src/utils',
         },
       },
     ],
